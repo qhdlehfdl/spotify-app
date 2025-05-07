@@ -1,0 +1,29 @@
+.artist-page{
+    margin-top: 80px;
+}
+
+input::placeholder{
+    color: white !important;
+}
+
+/* 툴팁 */
+.custom-tooltip {
+    background-color: #222;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    color: #fff;
+    text-align: center;
+}
+
+.custom-tooltip-img {
+    width: 80px;
+    height: 80px;
+    margin-top: 5px;
+    border-radius: 50%;
+}
+
+.custom-tooltip-popularity {
+    margin-top: 5px;
+}
+

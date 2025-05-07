@@ -1,0 +1,32 @@
+import React from "react";
+
+function TopTracks({ tracks }) {
+  return (
+    <div
+      className="card p-3"
+      style={{
+        width: "300px",
+        backgroundColor: "#121212",
+        color: "white",
+      }}
+    >
+      {tracks.map((track, index) => (
+        <div key={track.id} className="mb-3 d-flex align-items-center">
+          <img
+            src={track.album?.images?.[0]?.url}
+            alt={track.name}
+            style={{ width: 50, height: 50, borderRadius: 4, marginRight: 10 }}
+          />
+          <div>
+            <div style={{ fontWeight: "bold" }}>{track.name}</div>
+            <div style={{ fontSize: "0.85rem", color: "#aaa" }}>
+              Popularity: {track.popularity}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default TopTracks;
