@@ -1,6 +1,10 @@
 export async function getRelatedArtists(query, token) {
-    const url = `https://api.spotify.com/v1/search?q=genre:${query}&type=artist&limit=10`;
-    
+  query = query === undefined ? "pop" : query;
+  query = `${query}`.replace(/ /g, "+");
+  query = encodeURIComponent(`genre:${query}`);
+  console.log(query)
+    const url = `https://api.spotify.com/v1/search?q=${query}&type=artist&limit=10`;
+  console.log(url);
     try {
         const response = await fetch(url, {
             method: "GET",
@@ -18,7 +22,7 @@ export async function getRelatedArtists(query, token) {
         const data = await response.json();
 
         const relatedArtists = data.artists;
-
+      console.log(data);
         return relatedArtists;
     } catch (error) {
         console.error("get related artist error", error);

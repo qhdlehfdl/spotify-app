@@ -27,3 +27,8 @@ input::placeholder{
     margin-top: 5px;
 }
 
+.card{border: 1px solid #ddd;}
+
+h5{
+    color: white;
+}

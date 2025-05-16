@@ -1,12 +1,14 @@
 import {countryNameToCode} from "./getCountryTopSongsAndArtists.js";
 
-export async function getDailyGlobalData(token, region) {
+export async function getDailyGlobalData(token, region, period) {
   if (region !== "global") {
     region = await countryNameToCode(region);
   }
  
-    const songUrl = `https://charts-spotify-com-service.spotify.com/auth/v0/charts/regional-${region}-daily/latest`;
-    const artistUrl = `https://charts-spotify-com-service.spotify.com/auth/v0/charts/artist-${region}-daily/latest`;
+  console.log(region, period);
+
+    const songUrl = `https://charts-spotify-com-service.spotify.com/auth/v0/charts/regional-${region}-daily/${period}`;
+    const artistUrl = `https://charts-spotify-com-service.spotify.com/auth/v0/charts/artist-${region}-daily/${period}`;
     
   try {
     const headers = {

@@ -91,6 +91,7 @@ const Globe = ({ onCountryClick, selectedCountry }) => {
           const tooltipContent = d.properties.name;
           tooltip
             .style("opacity", 0.9)
+            .style("z-index",99)
             .html(tooltipContent)
             .style("left", event.pageX + 10 + "px")
             .style("top", event.pageY - 28 + "px");

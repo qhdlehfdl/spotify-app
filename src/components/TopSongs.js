@@ -5,7 +5,7 @@ function TopSongs({ countryName, songs }) {
 
   return (
     <div className="card top-section">
-      <h2 className="section-title">{countryName} - Top Songs</h2>
+      <h2 className="section-title" style={{textAlign : "center"}}>{countryName} - Top Songs</h2>
       <ul className="list-unstyled">
         {songs.map((data, index) => (
           <li key={index} className="media-item">

@@ -8,6 +8,21 @@ html, body {
   
 }
 
+.card{border: 1px solid #ddd;}
+
+.loading-message {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 16px;
+}
+
+.error-message {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 16px;
+}
 
 /* 카드 공통 스타일 */
 .card {

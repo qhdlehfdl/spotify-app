@@ -3,9 +3,7 @@ import React from "react";
 function TopTracks({ tracks }) {
   return (
     <div
-      className="card p-3"
       style={{
-        width: "300px",
         backgroundColor: "#121212",
         color: "white",
       }}

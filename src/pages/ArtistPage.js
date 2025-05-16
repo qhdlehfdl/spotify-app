@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import "../styles/ArtistPage.css";
 import PopularityBarchart  from "../components/PopularityBarchart.js";
 import TopTracks from "../components/TopTracks.js";
+import CollaborationGraph from "../components/CollaborationGraph.js";
 
 function ArtistPage() {
   const [query, setQuery] = useState("");
-    const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
+  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
   const [relatedArtists, setRelatedArtists] = useState(null);
   const [topTracks, setTopTracks] = useState(null);
-
+  const [collaboration, setCollaboration] = useState(null);
+  
   const inputChange = (e) => {
     setQuery(e.target.value);
   };
@@ -21,6 +23,7 @@ function ArtistPage() {
               `http://localhost:4000/api/search-artist/${query}`
           );
         const data = await response.json();
+        console.log(data);
         const combined = [data.artist,
         ...data.relatedArtist.items.filter(
           (artist) => artist.name !== data.artist.name),];
@@ -29,10 +32,41 @@ function ArtistPage() {
         const tracks = data.tracks
           .sort((a, b) => b.popularity - a.popularity)
           .slice(0, 5);
-        console.log(combined);
+        
+        let graphData = { nodes: new Map(), links: new Map() }; 
+        graphData.nodes.set(data.artist.name, { id: data.artist.name });
+
+        data.collaborate.items.filter(item => item.artists.length > 1).forEach(item => {
+          const artistNames = item.artists.map((a) => a.name);
+
+          artistNames.forEach(artistName => {
+            if (artistName === data.artist.name) return;
+
+            if (!graphData.nodes.has(artistName)) {
+              graphData.nodes.set(artistName, { id: artistName });
+            }
+
+            const key = `${data.artist.name}___${artistName}}`;
+
+            if (graphData.links.has(key)) {
+              graphData.links.get(key).count += 1;
+            } else {
+              graphData.links.set(key, {
+                source: data.artist.name,
+                target: artistName,
+                count: 1,
+              });
+            }
+          });
+        });
+        const finalGraphData = {
+          nodes: Array.from(graphData.nodes.values()),
+          links: Array.from(graphData.links.values()),
+        };
+        
         setRelatedArtists(combined);
         setTopTracks(tracks);
-        console.log(tracks);
+        setCollaboration(finalGraphData);
       } catch (error) {
           console.error("search-artist", error);
       }
@@ -65,9 +99,13 @@ function ArtistPage() {
             className="card p-4 w-100"
             style={{ maxWidth: "900px", backgroundColor: "#121212" }}
           >
+            <h5 className="mb-3 text-white">
+              Popularity Chart of Related Artists
+            </h5>
             <PopularityBarchart artists={relatedArtists} />
           </div>
-          {topTracks && relatedArtists && relatedArtists.length > 0 && (
+
+          {topTracks && relatedArtists.length > 0 && (
             <div
               className="card p-3"
               style={{
@@ -82,8 +120,30 @@ function ArtistPage() {
           )}
         </div>
       )}
+
+      {collaboration && (
+        <div className="d-flex justify-content-center mt-4">
+          <div
+            className="card p-4"
+            style={{
+              width: "100%",
+              maxWidth: "900px",
+              backgroundColor: "#121212",
+              color: "white",
+              boxSizing: "border-box",
+            }}
+          >
+            <h5 className="mb-3">Collaboration Graph</h5>
+            <CollaborationGraph
+              main={relatedArtists[0].name}
+              data={collaboration}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
+  
 }
 
 export default ArtistPage;

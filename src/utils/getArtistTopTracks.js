@@ -18,7 +18,6 @@ export async function getArtistTopTracks(artistId, token) {
         const data = await response.json();
 
         const tracks = data.tracks;
-        console.log(tracks);
 
         return tracks;
     } catch (error) {

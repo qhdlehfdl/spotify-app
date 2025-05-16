@@ -11,6 +11,8 @@ import { getSpotifyToken } from "./utils/getSpotifyToken.js";
 import { getRelatedArtists } from "./utils/getRelatedArtists.js";
 import { getArtistTopTracks } from "./utils/getArtistTopTracks.js";
 import { getDailyGlobalData } from "./utils/getDailyGlobalData.js";
+import { getStreamingData } from "./utils/getStreamingData.js";
+import { getCollaborateArtists } from "./utils/getCollaborateArtists.js";
 
 const app = express();
 app.use(cors());
@@ -18,13 +20,13 @@ app.use(express.json());
 const PORT = 4000;
 
 const unofficialToken =
-  "Bearer BQAH-sKzZwK3G22qaQ1c9cSyYSSpcokjbVhxVkFHafz--MBEVslLObmLoA0xXzoh4Vw5KHS1MAH6URsVQKj3p4wNCbS8gBFLBLfqVhFQIQMpxZ3E8GYHtoQdcDjZoT4tqemsiFZj4ar5NiezpbDJ3091Xi_pm55wy6TWVLn53LQMfwqMx6hA6KFZzBJyIsHZx6y6v2ZK55FA3Zwvro7VKTpj1zMLxqmnNLLn0M0opqAhxbBKku4pvA2l1hwBsS5W";
+  "Bearer BQB5RXY9Wt20x3M9baQZ8dCa243A3PTlw_jXC52PedsZBQsXiINI0ZMgXnDaKJPGO8anIPV9QC2e2gOGbHjt_nn_PsFrWfYlWWzGw-FzFWSKQrSoUJ0QRmEyD3nKUGAMbkzuWB4UPCM2KM5xqFKpGn9htxMQVeXVTmEyFCZvFRzzhcNE2mQ1MlWtQYdJ0E1VL8GTR5A-myTARDntOCPmaIn4PmPlCYocFnvvkFl1yutWNovWmCJmfcjyTIifS1Kt";
 
 app.get("/api/countryTop5/:country", async (req, res) => {
   const countryName = req.params.country;
-  const songs = await getCountryTopSongs(unofficialToken, countryName);
+  const songs = await getCountryTopSongs(unofficialToken, countryName, "latest");
   const artists = await getCountryTopArtists(unofficialToken, countryName);
-  const dailyResult = await getDailyGlobalData(unofficialToken, countryName);
+  const dailyResult = await getDailyGlobalData(unofficialToken, countryName,"latest");
 
   const result = { weeklyResult:{songs,artists},dailyResult };
   res.json(result);
@@ -32,7 +34,7 @@ app.get("/api/countryTop5/:country", async (req, res) => {
 
 app.get("/api/global-data", async (req, res) => {
   const weeklyResult = await getWeeklyGlobalData();
-  const dailyResult = await getDailyGlobalData(unofficialToken, "global");
+  const dailyResult = await getDailyGlobalData(unofficialToken, "global", "latest");
   
   const result = { weeklyResult, dailyResult };
 
@@ -54,9 +56,27 @@ app.get("/api/search-artist/:query", async (req, res) => {
   const artist = await searchArtist(query, token);
   const relatedArtist = await getRelatedArtists(artist.genres[0], token);
   const tracks = await getArtistTopTracks(artist.id, token);
+  const collaborateArtists = await getCollaborateArtists(artist.id, token);
 
-  res.json({ artist, relatedArtist: relatedArtist, tracks: tracks });
+  res.json({ artist, relatedArtist: relatedArtist, tracks: tracks, collaborate:collaborateArtists });
 });
+
+app.get("/api/history-data", async (req, res) => {
+  const country = req.query.country;
+  const date = req.query.date;
+
+  const result = await getDailyGlobalData(unofficialToken, country, date);
+
+  res.json(result);
+});
+
+app.get("/api/streaming-data", async (req, res) => {
+  const country = req.query.country;
+  
+  const result = await getStreamingData(unofficialToken, country);
+  console.log(country);
+  res.json(result);
+})
 
 app.listen(PORT, () => {
   console.log(`🚀 Server listening at http://localhost:${PORT}`);
