@@ -31,18 +31,20 @@ function CustomTooltip({ active, payload }) {
     return null;
 }
 
-const GenrePieChart = ({ genres, countryName }) => {
+const GenrePieChart = ({ genres, countryName, onGenreClick }) => {
   // 장르 데이터를 [{ name, value }, ...] 형식으로 변환
-  const total = Object.values(genres).reduce((sum, count) => sum + count, 0);
+  const total = Object.values(genres).reduce(
+    (sum, genreObj) => sum + genreObj.count,0);
 
-  const data = Object.entries(genres).map(([genre, count]) => ({
+  const data = Object.entries(genres).map(([genre, genreObj]) => ({
     name: genre,
-    value: count,
-    percent: ((count / total) * 100).toFixed(1), // 퍼센트 계산
+    value: genreObj.count,
+    percent: ((genreObj.count / total) * 100).toFixed(1), // 퍼센트 계산
   }));
 
+
   return (
-    <div className="card top-section" style={{ alignItems: "center" }}>
+    <div style={{ alignItems: "center" }}>
       <h2 className="section-title">{countryName} - Genres</h2>
       <PieChart width={600} height={400}>
         <Pie
@@ -53,6 +55,7 @@ const GenrePieChart = ({ genres, countryName }) => {
           outerRadius={130}
           fill="#8884d8"
           dataKey="value"
+          onClick={(data, index) => onGenreClick && onGenreClick(data.name)}
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

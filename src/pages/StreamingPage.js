@@ -115,8 +115,11 @@ function StreamingPage() {
           <div className="loading-text">Loading streaming data...</div>
         </div>
       )}
-      <div className="grid-container">
-        <div className="grid-item globe-cell">
+
+      {/* 상단 영역: 좌우 분할 */}
+      <div className="top-section">
+        {/* 왼쪽: 지구본 */}
+        <div className="globe-panel">
           <h3>Choose Country</h3>
           <div className="globe-wrapper">
             <Globe
@@ -128,42 +131,46 @@ function StreamingPage() {
           </div>
         </div>
 
-        <div className="grid-item artist-chart-cell">
-          <h3>{selectedCountry} Top Artist</h3>
-          {noDataForCountry ? (
-            <p className="error-message">
-              Spotify doesn't provide data for {selectedCountry}
-            </p>
-          ) : artistBarChartData ? (
-            <ArtistBarChart
-              artists={artistBarChartData}
-              onArtistClick={handleArtistClick}
-            />
-          ) : null}
-        </div>
-
-        <div className="grid-item song-chart-cell">
-          <h3>{selectedArtist?.artistName || "Artist"}'s Popular Tracks</h3>
-          {songBarChartData ? (
-            <div className="song-chart-scroll">
-              <SongBarChart
-                songs={songBarChartData}
-                onSongClick={handleSongClick}
+        {/* 오른쪽: 아티스트 & 곡 */}
+        <div className="charts-panel">
+          <div className="artist-chart-cell">
+            <h3>{selectedCountry} Top Artist</h3>
+            {noDataForCountry ? (
+              <p className="error-message">
+                Spotify doesn't provide data for {selectedCountry}
+              </p>
+            ) : artistBarChartData ? (
+              <ArtistBarChart
+                artists={artistBarChartData}
+                onArtistClick={handleArtistClick}
               />
-            </div>
-          ) : selectedArtist ? (
-            <p>Select an artist to view tracks.</p>
-          ) : null}
-        </div>
+            ) : null}
+          </div>
 
-        <div className="grid-item trend-chart-cell">
-          <h3>Weekly Streaming</h3>
-          {streamingChartData ? (
-            <StreamingLineChart data={streamingChartData} />
-          ) : selectedSong ? (
-            <p>Select a song to view streaming trend.</p>
-          ) : null}
+          <div className="song-chart-cell">
+            <h3>{selectedArtist?.artistName || "Artist"}'s Popular Tracks</h3>
+            {songBarChartData ? (
+              <div className="song-chart-scroll">
+                <SongBarChart
+                  songs={songBarChartData}
+                  onSongClick={handleSongClick}
+                />
+              </div>
+            ) : selectedArtist ? (
+              <p>Select an artist to view tracks.</p>
+            ) : null}
+          </div>
         </div>
+      </div>
+
+      {/* 하단: 전체 폭 차트 */}
+      <div className="trend-chart-cell">
+        <h3>Weekly Streaming</h3>
+        {streamingChartData ? (
+          <StreamingLineChart data={streamingChartData} />
+        ) : selectedSong ? (
+          <p>Select a song to view streaming trend.</p>
+        ) : null}
       </div>
     </div>
   );

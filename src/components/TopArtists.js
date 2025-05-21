@@ -4,7 +4,7 @@ function TopArtists({ countryName, artists }) {
   if (!artists) return <div>Loading...</div>;
 
   return (
-    <div className="card top-section">
+    <div>
       <h2 className="section-title" style={{textAlign:"center"}}>{countryName} - Top Artists</h2>
       <ul className="list-unstyled">
         {artists.map((artist, index) => (

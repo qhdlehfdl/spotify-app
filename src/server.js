@@ -20,7 +20,7 @@ app.use(express.json());
 const PORT = 4000;
 
 const unofficialToken =
-  "Bearer BQB5RXY9Wt20x3M9baQZ8dCa243A3PTlw_jXC52PedsZBQsXiINI0ZMgXnDaKJPGO8anIPV9QC2e2gOGbHjt_nn_PsFrWfYlWWzGw-FzFWSKQrSoUJ0QRmEyD3nKUGAMbkzuWB4UPCM2KM5xqFKpGn9htxMQVeXVTmEyFCZvFRzzhcNE2mQ1MlWtQYdJ0E1VL8GTR5A-myTARDntOCPmaIn4PmPlCYocFnvvkFl1yutWNovWmCJmfcjyTIifS1Kt";
+  "Bearer BQAUU8xH9HRp0NGjzDmGDZ9aI6ZvpqYgXMSMgZEhqiDpnZ8Jm1w2ZOIMrWLvR8b6sYAeRaMHZH2btW-fJ6oofwLFf623UohckcE2r164GBkeuMItCrskneDubfnRMfvWhnMiVq4GzfW0FsxBhCaeyTjg-owMOSKf5xOkt1XHBm5EGkItMsvO4E0rC1lHAb_70GRfiThKkGFuTLmMT67Hr678qqbK2MwVLVQtpkJjaBmccAOm1NKmK9XJdE4YygWz";
 
 app.get("/api/countryTop5/:country", async (req, res) => {
   const countryName = req.params.country;
@@ -77,6 +77,24 @@ app.get("/api/streaming-data", async (req, res) => {
   console.log(country);
   res.json(result);
 })
+
+app.get("/api/genre-data", async (req, res) => {
+  const countryName = req.query.country;
+  const dailyResult = await getDailyGlobalData(unofficialToken, countryName, "latest");
+  const token = await getSpotifyToken();
+  const genre = await getGenre(dailyResult.artists, token);
+
+  const result = { artists: dailyResult.artists, songs: dailyResult.songs, genre: genre };
+  res.json(result);
+});
+
+app.get("/api/selected-country", async (req, res) => {
+  const countryName = req.query.country;
+
+  const dailyResult = await getDailyGlobalData(unofficialToken, countryName, "latest");
+
+  res.json(dailyResult);
+});
 
 app.listen(PORT, () => {
   console.log(`🚀 Server listening at http://localhost:${PORT}`);

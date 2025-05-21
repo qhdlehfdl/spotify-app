@@ -110,7 +110,7 @@ function HistoryPage() {
 
       <div className="main-content">
         <div className="globe-container">
-          <Globe
+          <Globe 
             onCountryClick={handleCountryClick}
             selectedCountry={selectedCountry}
           />
@@ -118,38 +118,45 @@ function HistoryPage() {
 
         <div className="chart-container">
           <div className="chart-card">
-            {isLoading ? (
-              <div className="loading-message">Loading chart data...</div>
-            ) : error ? (
-              <div className="error-message">
-                Spotify doesn't provide chart data for {selectedCountry}
-              </div>
-            ) : chartData ? (
-              <TopSongs countryName={selectedCountry} songs={chartData.songs} />
-            ) : (
-              <div className="error-message">
-                No chart data available for {selectedCountry}
-              </div>
-            )}
+            <div className="card">
+              {isLoading ? (
+                <div className="loading-message">Loading chart data...</div>
+              ) : error ? (
+                <div className="error-message">
+                  Spotify doesn't provide chart data for {selectedCountry}
+                </div>
+              ) : chartData ? (
+                <TopSongs
+                  countryName={selectedCountry}
+                  songs={chartData.songs}
+                />
+              ) : (
+                <div className="error-message">
+                  No chart data available for {selectedCountry}
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="chart-card">
-            {isLoading ? (
-              <div className="loading-message">Loading chart data...</div>
-            ) : error ? (
-              <div className="error-message">
-                Spotify doesn't provide chart data for {selectedCountry}
-              </div>
-            ) : chartData ? (
-              <TopArtists
-                countryName={selectedCountry}
-                artists={chartData.artists}
-              />
-            ) : (
-              <div className="error-message">
-                No chart data available for {selectedCountry}
-              </div>
-            )}
+            <div className="card">
+              {isLoading ? (
+                <div className="loading-message">Loading chart data...</div>
+              ) : error ? (
+                <div className="error-message">
+                  Spotify doesn't provide chart data for {selectedCountry}
+                </div>
+              ) : chartData ? (
+                    <TopArtists
+                  countryName={selectedCountry}
+                  artists={chartData.artists}
+                />
+              ) : (
+                <div className="error-message">
+                  No chart data available for {selectedCountry}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
