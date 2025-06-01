@@ -1,8 +1,15 @@
-.artist-page{
-    margin-top: 80px;
+:root {
+  --spotify-green: #1ed760;
+  --dark-gray: #121212;
+  --light-dark-gray: #1f1f1f;
+  --light-gray: #1a1a1a;
 }
 
-input::placeholder{
+.artist-page {
+    margin-top: 3%;
+}
+
+input::placeholder {
     color: white !important;
 }
 
@@ -27,8 +34,8 @@ input::placeholder{
     margin-top: 5px;
 }
 
-.card{border: 1px solid #ddd;}
+.card {border: 1px solid #ddd;}
 
-h5{
+h5 {
     color: white;
 }
