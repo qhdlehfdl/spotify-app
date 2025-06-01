@@ -6,13 +6,10 @@
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
   background-color: #121212;
   color: #ffffff;
   height: 100%;
   width: 100%;
-  overflow: hidden;
 }
 
 /* 백그라운드 지구본 사진 */

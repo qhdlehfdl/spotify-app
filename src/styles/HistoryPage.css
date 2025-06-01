@@ -4,6 +4,9 @@
   align-items: center;
 }
 
+.chart-card > .card {
+  border: 1px solid #ddd;
+}
 .calendar-toggle-btn {
   z-index: 21;
 }
@@ -27,7 +30,7 @@
 
 .main-content {
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: flex-start;
   margin-top: 2rem;
   gap: 2rem;
@@ -55,8 +58,8 @@
   position: fixed;
   top: 90px;
   left: 40px;
-  width: 600px;   
-  height: 600px;  
+  width: 600px;
+  height: 600px;
   z-index: 1;
 }
 
@@ -69,15 +72,13 @@
   padding-top: 90px; /* 지구본 높이만큼 여백 확보 (필요시 조절) */
 }
 
-
-
 /*달력*/
 .react-calendar {
   width: 280px;
   max-width: 100%;
-  background: #F8F9FA;
+  background: #f8f9fa;
   border: none;
-  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-family: "Arial", "Helvetica", sans-serif;
   color: black;
   border-radius: 10px;
   padding: 10px;
@@ -94,7 +95,7 @@
   background: none;
   color: black;
   border-radius: 6px;
-  border:none;
+  border: none;
   transition: background-color 0.2s ease;
 }
 
@@ -121,7 +122,7 @@
 }
 
 .react-calendar__tile:enabled:hover {
-  background-color: #e2e6ea; 
+  background-color: #e2e6ea;
 }
 
 .react-calendar__tile--active {
@@ -130,7 +131,7 @@
 }
 
 .react-calendar__tile:disabled {
-  background-color:#bbbbbb;
+  background-color: #bbbbbb;
   color: #555;
 }
 
@@ -140,5 +141,3 @@
   color: #555;
   pointer-events: none;
 }
-
-

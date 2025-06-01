@@ -1,14 +1,4 @@
 
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: #121212;
-  height: 100%;
-  width: 100%;
-  
-}
-
-.card{border: 1px solid #ddd;}
 
 .loading-message {
   text-align: center;
@@ -26,6 +16,7 @@ html, body {
 
 /* 카드 공통 스타일 */
 .card {
+  border: 1px solid #ddd !important;
   background-color: #1E1E1E;         /* 배경보다 5~10% 밝은 표면 */
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -47,7 +38,6 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 
 /* 오른쪽 패널: Top Songs + Top Artists 포함 */

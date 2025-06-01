@@ -3,6 +3,7 @@ import Globe from "../components/Globe.js";
 import TopArtists from "../components/TopArtists.js";
 import GenrePieChart from "../components/genrePieChart.js";
 import { getDailyGlobalData } from "../utils/getDailyGlobalData.js";
+import "../styles/GenrePage.css";
 
 function GenrePage() {
   const [globalData, setGlobalData] = useState({

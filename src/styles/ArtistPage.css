@@ -5,11 +5,11 @@
   --light-gray: #1a1a1a;
 }
 
-.artist-page {
-    margin-top: 3%;
+.artist-page{
+    margin-top: 80px;
 }
 
-input::placeholder {
+input::placeholder{
     color: white !important;
 }
 
@@ -34,8 +34,8 @@ input::placeholder {
     margin-top: 5px;
 }
 
-.card {border: 1px solid #ddd;}
+.card{border: 1px solid #ddd !important;}
 
-h5 {
+h5{
     color: white;
 }

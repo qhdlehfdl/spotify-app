@@ -21,9 +21,12 @@ function WelcomePage() {
 
       {/* 중앙 환영글 */}
       <div className="welcome-center">
-        <h1 className="welcome-center-title">Explore the most popular songs.</h1>
+        <h1 className="welcome-center-title">
+          Explore the most popular songs.
+        </h1>
         <p className="welcome-center-desc">
-          Explore the most popular Spotify charts by country.<br />
+          Explore the most popular Spotify charts by country.
+          <br />
           Dive into analytics and discover music trends worldwide!
         </p>
 
@@ -34,7 +37,7 @@ function WelcomePage() {
               className="search-input"
               type="text"
               value={input}
-              onChange={e => setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value)}
               placeholder="Search for an artist"
             />
             <button type="submit" className="search-btn">
@@ -42,18 +45,27 @@ function WelcomePage() {
             </button>
           </div>
         </form>
-        
 
         {/* 페이지 이동 링크 */}
         <div className="welcome-links">
-          <button className="spotify-button" onClick={() => window.open('https://spotify.com', '_blank')}>
-            <img src="/Spotify_logo_with_text.svg" alt="Spotify"/>
+          <button
+            className="spotify-button"
+            onClick={() => window.open("https://spotify.com", "_blank")}
+          >
+            <img src="/Spotify_logo_with_text.svg" alt="Spotify" />
           </button>
-          <a class="page-link" href="/country">🌏Global</a>
-          <a class="page-link" href="/artist">🎵Artist</a>
-          <a class="page-link" href="/history">📅History</a>
-          <a class="page-link" href="/streaming">🎧Streaming</a>
-
+          <a class="page-link" href="/genre">
+            🎵Genre
+          </a>
+          <a class="page-link" href="/artist">
+            👩‍🎤Artist
+          </a>
+          <a class="page-link" href="/history">
+            📅History
+          </a>
+          <a class="page-link" href="/streaming">
+            🎧Streaming
+          </a>
         </div>
       </div>
 
@@ -61,8 +73,10 @@ function WelcomePage() {
       <footer className="welcome-footer">
         <div>
           <span>© 2025 Team Doraemon | </span>
-          <a href="https://github.com/qhdlehfdl/spotify-app" target="_blank">GitHub</a> |
-          <a href="#about">About</a>
+          <a href="https://github.com/qhdlehfdl/spotify-app" target="_blank">
+            GitHub
+          </a>{" "}
+          |<a href="#about">About</a>
         </div>
         <div>
           <small>This site is not the official site of Spotify.</small>
