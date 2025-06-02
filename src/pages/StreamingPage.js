@@ -4,6 +4,7 @@ import ArtistBarChart from "../components/ArtistBarChart.js";
 import SongBarChart from "../components/SongBarChart.js";
 import StreamingLineChart from "../components/StreamingLineChart.js";
 import "../styles/StreamingPage.css";
+import { motion, AnimatePresence } from "framer-motion";
 
 function StreamingPage() {
   const [selectedCountry, setSelectedCountry] = useState("global");
@@ -109,6 +110,7 @@ function StreamingPage() {
 
   return (
     <div className="streaming-page">
+      <img className="welcome-bg" src="/bg.png" alt="" />
       {isLoading && (
         <div className="loading-overlay">
           <div className="spinner"></div>

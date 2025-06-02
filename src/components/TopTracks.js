@@ -4,7 +4,7 @@ function TopTracks({ tracks }) {
   return (
     <div
       style={{
-        backgroundColor: "#121212",
+        backgroundColor: "rgba(17, 59, 87, 0.329)",
         color: "white",
       }}
     >
@@ -17,7 +17,7 @@ function TopTracks({ tracks }) {
           />
           <div>
             <div style={{ fontWeight: "bold" }}>{track.name}</div>
-            <div style={{ fontSize: "0.85rem", color: "#aaa" }}>
+            <div style={{ fontSize: "0.85rem", color: "rgb(243, 241, 241)" }}>
               Popularity: {track.popularity}
             </div>
           </div>

@@ -148,37 +148,6 @@
 
 
 
-.media-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 12px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #444;
-}
-
-.media-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.media-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.media-title {
-  font-weight: 500;
-  font-size: 16px;
-  color: #fff;
-}
-
-.media-subtitle {
-  font-size: 14px;
-  color: #aaa;
-}
 
 
 /* 반응형 (화면이 작을 때) */

@@ -5,6 +5,8 @@ import GenrePieChart from "../components/genrePieChart.js";
 import { getDailyGlobalData } from "../utils/getDailyGlobalData.js";
 import "../styles/GenrePage.css";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 function GenrePage() {
   const [globalData, setGlobalData] = useState({
     name: "Global",
@@ -103,10 +105,14 @@ function GenrePage() {
 
   return (
     <div className="app">
+      <img className="welcome-bg" src="/bg.png" alt="" />
       <div className="container-fluid px-3 py-2">
         <div className="row gx-4 gy-2">
           <div className="col-md-6">
-            <div className="card h-100">
+            <div
+              className="card h-100"
+              style={{ backgroundColor: "rgba(17, 59, 87, 0.329)" }}
+            >
               <div className="card-body p-3">
                 <Globe onCountryClick={handleCountryClick} />
               </div>
@@ -116,28 +122,54 @@ function GenrePage() {
           <div className="col-md-6">
             <div className="row h-100 gx-2">
               <div className="col-md-6">
-                <div className="card h-100">
+                <div
+                  className="card h-100"
+                  style={{ backgroundColor: "rgba(17, 59, 87, 0.329)" }}
+                >
                   <div className="card-body p-3">
-                    {selectedGlobalGenreArtists?.genre && (
-                      <TopArtists
-                        countryName={selectedGlobalGenreArtists.genre}
-                        artists={selectedGlobalGenreArtists.artists}
-                        onGenreClick={handleGlobalGenreClick}
-                      />
-                    )}
+                    <AnimatePresence mode="wait">
+                      {selectedGlobalGenreArtists?.genre && (
+                        <motion.div
+                          key={`globalArtists-${selectedGlobalGenreArtists.genre}`}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.9 }}
+                          transition={{ duration: 0.4, ease: "easeOut" }}
+                        >
+                          <TopArtists
+                            countryName={selectedGlobalGenreArtists.genre}
+                            artists={selectedGlobalGenreArtists.artists}
+                            onGenreClick={handleGlobalGenreClick}
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
 
               <div className="col-md-6">
-                <div className="card h-100">
+                <div
+                  className="card h-100"
+                  style={{ backgroundColor: "rgba(17, 59, 87, 0.329)" }}
+                >
                   <div className="card-body p-3">
-                    {selectedCountrylGenreArtists?.genre && (
-                      <TopArtists
-                        countryName={selectedCountrylGenreArtists.genre}
-                        artists={selectedCountrylGenreArtists.artists}
-                      />
-                    )}
+                    <AnimatePresence mode="wait">
+                      {selectedCountrylGenreArtists?.genre && (
+                        <motion.div
+                          key={`countryArtists-${selectedCountrylGenreArtists.genre}`}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.9 }}
+                          transition={{ duration: 0.4, ease: "easeOut" }}
+                        >
+                          <TopArtists
+                            countryName={selectedCountrylGenreArtists.genre}
+                            artists={selectedCountrylGenreArtists.artists}
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
@@ -147,7 +179,10 @@ function GenrePage() {
 
         <div className="row gx-2 gy-2 mt-2">
           <div className="col-12">
-            <div className="card">
+            <div
+              className="card"
+              style={{ backgroundColor: "rgba(17, 59, 87, 0.329)" }}
+            >
               <div className="card-body">
                 <div className="row">
                   <div className="col-md-6 text-center">

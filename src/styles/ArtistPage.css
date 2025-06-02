@@ -1,41 +1,50 @@
 :root {
-  --spotify-green: #1ed760;
-  --dark-gray: #121212;
-  --light-dark-gray: #1f1f1f;
-  --light-gray: #1a1a1a;
+    --spotify-green: #1ed760;
+    --dark-gray: #121212;
+    --light-dark-gray: #1f1f1f;
+    --light-gray: #1a1a1a;
+  }
+  
+.card.p-4{
+    background-color: rgba(17, 59, 87, 0.329) !important;
 }
 
-.artist-page{
-    margin-top: 80px;
-}
+  .artist-page{
+      margin-top: 80px;
+  }
+  
+  input{
+    z-index:5;
+  }
 
-input::placeholder{
-    color: white !important;
-}
-
-/* 툴팁 */
-.custom-tooltip {
-    background-color: #222;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #333;
-    color: #fff;
-    text-align: center;
-}
-
-.custom-tooltip-img {
-    width: 80px;
-    height: 80px;
-    margin-top: 5px;
-    border-radius: 50%;
-}
-
-.custom-tooltip-popularity {
-    margin-top: 5px;
-}
-
-.card{border: 1px solid #ddd !important;}
-
-h5{
-    color: white;
-}
+  input::placeholder{
+      color: white !important;
+  }
+  
+  /* 툴팁 */
+  .custom-tooltip {
+      background-color: #222;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      color: #fff;
+      text-align: center;
+  }
+  
+  .custom-tooltip-img {
+      width: 80px;
+      height: 80px;
+      margin-top: 5px;
+      border-radius: 50%;
+  }
+  
+  .custom-tooltip-popularity {
+      margin-top: 5px;
+  }
+  
+  .card{border: 1px solid #ddd !important;
+        z-index:5 !important;}
+  
+  h5{
+      color: white;
+  }

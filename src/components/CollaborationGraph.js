@@ -62,7 +62,7 @@ const CollaborationGraph = ({ main, data }) => {
       style={{
         width: "100%",
         height: "60vh", // 반응형 높이 (뷰포트 60%)
-        backgroundColor: "#121212",
+        backgroundColor: "rgba(0,0,0,0)",
         borderRadius: "12px",
         boxSizing: "border-box",
       }}
@@ -76,7 +76,7 @@ const CollaborationGraph = ({ main, data }) => {
         }
         nodeVal={computeNodeValues()}
         linkWidth={(link) => Math.min(10, link.count)}
-        backgroundColor="#121212"
+        backgroundColor="rgba(0,0,0,0)"
         linkColor={() => "white"}
         width={dimensions.width}
         height={dimensions.height}

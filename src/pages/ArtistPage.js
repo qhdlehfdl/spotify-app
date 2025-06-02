@@ -87,6 +87,8 @@ function ArtistPage() {
 
   return (
     <div className="artist-page container-fluid py-5">
+      <img className="welcome-bg" src="/bg.png" alt="" />
+
       <div className="search-box d-flex justify-content-center mb-4">
         <div className="input-group" style={{ maxWidth: "500px" }}>
           <input
@@ -123,7 +125,7 @@ function ArtistPage() {
               className="card p-3"
               style={{
                 width: "300px",
-                backgroundColor: "#121212",
+                backgroundColor: "rgba(17, 59, 87, 0.329)",
                 color: "white",
               }}
             >

@@ -25,6 +25,8 @@
   flex-direction: column;
   min-height: 100%;
   overflow: hidden;
+  z-index:5;
+  background-color: rgba(17, 59, 87, 0.329);
 }
 
 .globe-wrapper {
@@ -51,11 +53,12 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  z-index:5;
 }
 
 /* 아티스트 차트 */
 .artist-chart-cell {
-  background-color: #1e1e1e;
+  background-color: rgba(17, 59, 87, 0.329);
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
@@ -72,7 +75,7 @@
 
 /* 곡 차트 */
 .song-chart-cell {
-  background-color: #1e1e1e;
+  background-color: rgba(17, 59, 87, 0.329);
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
@@ -88,11 +91,12 @@
 
 /* 하단 트렌드 차트 */
 .trend-chart-cell {
-  background-color: #1e1e1e;
+  background-color: rgba(17, 59, 87, 0.329);
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
   min-height: 400px;
+  z-index:5;
 }
 
 /* 제목 스타일 */

@@ -1,9 +1,13 @@
+// src/pages/HistoryPage.js
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import Globe from "../components/Globe.js";
 import "../styles/HistoryPage.css";
 import TopSongs from "../components/TopSongs.js";
 import TopArtists from "../components/TopArtists.js";
+
+// Framer Motion import
+import { motion, AnimatePresence } from "framer-motion";
 
 function HistoryPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -65,12 +69,6 @@ function HistoryPage() {
       newDate.getDate()
     );
 
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-
-    const formattedDate = `${year}-${month}-${day}`;
-
     setSelectedDate(date);
     setShowCalendar(false);
   };
@@ -81,6 +79,8 @@ function HistoryPage() {
 
   return (
     <div className="history-page">
+      <img className="welcome-bg" src="/bg.png" alt="" />
+
       <div className="calendar-header">
         <button
           onClick={toggleCalendar}
@@ -110,54 +110,103 @@ function HistoryPage() {
 
       <div className="main-content">
         <div className="globe-container">
-          <Globe 
+          <Globe
             onCountryClick={handleCountryClick}
             selectedCountry={selectedCountry}
           />
         </div>
 
         <div className="chart-container">
-          <div className="chart-card">
-            <div className="card">
-              {isLoading ? (
-                <div className="loading-message">Loading chart data...</div>
-              ) : error ? (
-                <div className="error-message">
-                  Spotify doesn't provide chart data for {selectedCountry}
+          {/* TopSongs 카드 */}
+          <AnimatePresence mode="wait">
+            {!isLoading && chartData && !error ? (
+              <motion.div
+                key={`songs-${selectedCountry}-${selectedDate.toISOString()}`}
+                className="chart-card"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <div
+                  className="card"
+                  style={{ backgroundColor: "rgba(17, 59, 87, 0.329)" }}
+                >
+                  <TopSongs
+                    countryName={selectedCountry}
+                    songs={chartData.songs}
+                  />
                 </div>
-              ) : chartData ? (
-                <TopSongs
-                  countryName={selectedCountry}
-                  songs={chartData.songs}
-                />
-              ) : (
-                <div className="error-message">
-                  No chart data available for {selectedCountry}
+              </motion.div>
+            ) : (
+              <motion.div
+                key={`empty-songs-${selectedCountry}-${selectedDate.toISOString()}`}
+                className="chart-card"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="card">
+                  {isLoading ? (
+                    <div className="loading-message">Loading chart data...</div>
+                  ) : error ? (
+                    <div className="error-message">
+                      Spotify doesn't provide chart data for {selectedCountry}
+                    </div>
+                  ) : (
+                    <div className="error-message">
+                      No chart data available for {selectedCountry}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-          <div className="chart-card">
-            <div className="card">
-              {isLoading ? (
-                <div className="loading-message">Loading chart data...</div>
-              ) : error ? (
-                <div className="error-message">
-                  Spotify doesn't provide chart data for {selectedCountry}
+          {/* TopArtists 카드 */}
+          <AnimatePresence mode="wait">
+            {!isLoading && chartData && !error ? (
+              <motion.div
+                key={`songs-${selectedCountry}-${selectedDate.toISOString()}`}
+                className="chart-card"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <div className="card" style={{ backgroundColor: "rgba(17, 59, 87, 0.329)" }}>
+                  <TopArtists
+                    countryName={selectedCountry}
+                    artists={chartData.artists}
+                  />
                 </div>
-              ) : chartData ? (
-                    <TopArtists
-                  countryName={selectedCountry}
-                  artists={chartData.artists}
-                />
-              ) : (
-                <div className="error-message">
-                  No chart data available for {selectedCountry}
+              </motion.div>
+            ) : (
+              <motion.div
+                key={`empty-artists-${selectedCountry}-${selectedDate.toISOString()}`}
+                className="chart-card"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="card">
+                  {isLoading ? (
+                    <div className="loading-message">Loading chart data...</div>
+                  ) : error ? (
+                    <div className="error-message">
+                      Spotify doesn't provide chart data for {selectedCountry}
+                    </div>
+                  ) : (
+                    <div className="error-message">
+                      No chart data available for {selectedCountry}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>

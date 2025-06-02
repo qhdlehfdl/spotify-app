@@ -19,8 +19,8 @@ function TopSongs({ countryName, songs }) {
             />
             <div className="media-info">
               <div className="media-title">{data.trackMetadata.trackName}</div>{" "}
-              by{" "}
-              <div className="media-subtitle">
+              
+              <div className="media-subtitle" style={{ color: "white;" }}>
                 {data.trackMetadata.artists.map((a) => a.name).join(", ")}
               </div>
             </div>

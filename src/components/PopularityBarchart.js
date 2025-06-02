@@ -46,8 +46,14 @@ function PopularityBarchart({ artists }) {
             margin={{ top: 20, right: 30, left: 20, bottom: 70 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" angle={-30} textAnchor="end" interval={0} />
-            <YAxis domain={[0, 100]} />
+            <XAxis
+              dataKey="name"
+              angle={-30}
+              textAnchor="end"
+              interval={0}
+              tick={{ fill: "white" }}
+            />
+            <YAxis domain={[0, 100]} tick={{ fill: "white" }} />
             <Tooltip
               content={<CustomTooltip />}
               cursor={{ fill: "transparent" }}

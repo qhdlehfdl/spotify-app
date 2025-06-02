@@ -37,8 +37,14 @@ function ArtistBarChart({ artists, onArtistClick }) {
           <XAxis
             type="number"
             domain={[0, (dataMax) => Math.ceil(dataMax * 1.05)]}
+            tick={{ fill: "white" }}
           />
-          <YAxis dataKey="artistName" type="category" width={120} />
+          <YAxis
+            dataKey="artistName"
+            type="category"
+            width={120}
+            tick={{ fill: "white" }}
+          />
           <Tooltip
             formatter={(value) => value.toLocaleString()}
             cursor={{ fill: "transparent" }}

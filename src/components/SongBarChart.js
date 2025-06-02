@@ -64,18 +64,30 @@ const SongBarChart = ({ songs, onSongClick }) => {
           layout="vertical"
           margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
         >
-          <XAxis type="number" domain={[0, (dataMax) => Math.ceil(dataMax * 1.05)]} />
-          <YAxis dataKey="songName" type="category" width={150} />
+          <XAxis
+            type="number"
+            domain={[0, (dataMax) => Math.ceil(dataMax * 1.05)]}
+            tick={{ fill: "white" }}
+          />
+          <YAxis
+            dataKey="songName"
+            type="category"
+            width={150}
+            tick={{ fill: "white" }}
+          />
           <Tooltip
             cursor={{ fill: "transparent" }}
             content={<CustomTooltip />}
           />
-          <Bar dataKey="streaming" activeBar={{ fill: "#0D6EFD" }}
+          <Bar
+            dataKey="streaming"
+            activeBar={{ fill: "#0D6EFD" }}
             onClick={(data) => {
               if (onSongClick) {
                 onSongClick(data);
               }
-            }}>
+            }}
+          >
             {songs.map((entry, index) => (
               <Cell key={index} fill="#FFFF" />
             ))}

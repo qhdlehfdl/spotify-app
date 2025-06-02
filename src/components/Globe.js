@@ -37,7 +37,7 @@ const Globe = ({ onCountryClick, selectedCountry }) => {
       .select(svgRef.current)
       .attr("width", width)
       .attr("height", height)
-      .style("background", "#121212");
+      .style("border-radius", "8px");
 
     svg.selectAll("*").remove();
     const g = svg.append("g");
@@ -65,7 +65,7 @@ const Globe = ({ onCountryClick, selectedCountry }) => {
 
     g.append("path")
       .datum({ type: "Sphere" })
-      .attr("fill", "#121212")
+      .attr("fill", "rgb(72, 71, 71)")
       .attr("stroke", "#ffff")
       .attr("d", path);
 
