@@ -137,6 +137,23 @@ const Globe = ({ onCountryClick, selectedCountry }) => {
 
     svg.call(zoom);
 
+    let lastTime = Date.now();
+    const rotateSpeed = 0.02; // 낮을수록 느림
+
+    const timer = d3.timer(() => {
+      const currentTime = Date.now();
+      const delta = (currentTime - lastTime) / 1000; // 초 단위
+      lastTime = currentTime;
+
+      const rotation = projection.rotate();
+      rotation[0] += rotateSpeed * delta * 360; // 동쪽으로 회전 (x축 회전)
+      projection.rotate(rotation);
+      rotationRef.current = rotation;
+
+      g.selectAll("path").attr("d", path);
+    });
+
+
     return () => {
       svg.selectAll("*").remove();
       tooltip.remove();
