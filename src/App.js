@@ -5,7 +5,6 @@ import HistoryPage from "./pages/HistoryPage.js";
 import StreamingPage from "./pages/StreamingPage.js";
 import GenrePage from "./pages/GenrePage.js";
 import WelcomePage from "./pages/WelcomePage.js";
-import HomePage from "./pages/HomePage.js";
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
         <Route path="/history" element={<HistoryPage/>}/>
         <Route path="/streaming" element={<StreamingPage />} />
         <Route path="/genre" element={<GenrePage />} />
-        <Route path="/home" element={<HomePage />} />
         <Route path="/welcome" element={<WelcomePage />} />
       </Routes>
     </Router>

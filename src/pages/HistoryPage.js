@@ -7,6 +7,7 @@ import Globe from "../components/Globe.js";
 import TopSongs from "../components/TopSongs.js";
 import TopArtists from "../components/TopArtists.js";
 import Navbar from "../components/Nav.js";
+import { getDailyGlobalData } from "../utils/getDailyGlobalData.js";
 
 import "../styles/HistoryPage.css";
 
