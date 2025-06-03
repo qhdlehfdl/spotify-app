@@ -1,5 +1,4 @@
 .streaming-page {
-  padding: 20px;
   min-height: 100dvh;
   box-sizing: border-box;
   overflow-y: auto;
@@ -10,8 +9,9 @@
 
 .top-section {
   display: flex;
+  margin-top: 5rem;
   gap: 20px;
-  height: 600px; 
+  height: 600px;
 }
 
 /* 좌측 지구본 영역 */

@@ -1,0 +1,217 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  height: 100%;
+  width: 100%;
+  
+}
+
+.card{border: 1px solid #ddd;}
+
+.loading-message {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 16px;
+}
+
+.error-message {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 16px;
+}
+
+/* 카드 공통 스타일 */
+.card {
+  background-color: #1E1E1E;         /* 배경보다 5~10% 밝은 표면 */
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 0.5px solid rgba(255,255,255,0.1);
+}
+
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  background-color: #121212;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+/* 지구본 영역: 가로폭의 40% */
+.globe-container {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* 오른쪽 패널: Top Songs + Top Artists 포함 */
+.top-panel {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  background: #121212;
+  border-radius: 12px;
+  padding: 16px;
+  max-height: 100vh;
+  gap:16px;
+}
+
+/* Top Songs 영역 */
+.top-songs-container {
+  width:50%;
+}
+
+/* Top Artists 영역 */
+.top-artists-container {
+  width: 50%; /* 너비 설정 */
+}
+
+/* 곡 리스트 */
+.track-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  margin: 20px auto;
+}
+
+.track-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+  align-items: center;
+}
+
+.track-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.track-info, .artist-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.track-info a {
+  color: #1ED760;
+  text-decoration: none;
+}
+
+.track-info audio {
+  margin-top: 6px;
+  width: 100%;
+}
+
+/* 아티스트 리스트 */
+.artist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.artist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.artist-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.artist-info a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.artist-info a:hover {
+  color: #1ED760;
+}
+
+/* 공통 스타일 */
+.top-section {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+
+
+
+.media-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #444;
+}
+
+.media-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.media-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-title {
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+}
+
+.media-subtitle {
+  font-size: 14px;
+  color: #aaa;
+}
+
+
+/* 반응형 (화면이 작을 때) */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+    height:auto;
+  }
+
+  .globe-container {
+    width: 100%;
+    max-height: 100vh;
+  }
+
+  .top-panel {
+    width: 100%;
+    padding: 12px;
+    border-radius: 0;
+  }
+
+  .track-item img,
+  .artist-item img {
+    width: 48px;
+    height: 48px;
+  }
+}

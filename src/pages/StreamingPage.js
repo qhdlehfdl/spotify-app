@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import Globe from "../components/Globe.js";
 import ArtistBarChart from "../components/ArtistBarChart.js";
 import SongBarChart from "../components/SongBarChart.js";
 import StreamingLineChart from "../components/StreamingLineChart.js";
+import Navbar from "../components/Nav.js";
+
 import "../styles/StreamingPage.css";
-import { motion, AnimatePresence } from "framer-motion";
+
 
 function StreamingPage() {
   const [selectedCountry, setSelectedCountry] = useState("global");
@@ -110,6 +114,7 @@ function StreamingPage() {
 
   return (
     <div className="streaming-page">
+      <Navbar />
       <img className="welcome-bg" src="/bg.png" alt="" />
       {isLoading && (
         <div className="loading-overlay">

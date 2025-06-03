@@ -1,6 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
+import Navbar from "../components/Nav_welcome.js";
+
 import "../styles/WelcomePage.css";
 
 function WelcomePage() {
@@ -16,6 +19,8 @@ function WelcomePage() {
   
   return (
     <div className="app">
+      <Navbar />
+
       {/* 백그라운드 지구본 사진 (추후 영상으로 대체하거나, 그대로 사용) */}
       <img className="welcome-bg" src="/bg.png" alt="" />
 
@@ -75,11 +80,10 @@ function WelcomePage() {
           <span>© 2025 Team Doraemon | </span>
           <a href="https://github.com/qhdlehfdl/spotify-app" target="_blank">
             GitHub
-          </a>{" "}
-          |<a href="#about">About</a>
+          </a>
         </div>
         <div>
-          <small>This site is not the official site of Spotify.</small>
+          <small>Not the official site of Spotify.</small>
         </div>
       </footer>
     </div>

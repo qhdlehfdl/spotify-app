@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import "../styles/ArtistPage.css";
 import PopularityBarchart  from "../components/PopularityBarchart.js";
 import TopTracks from "../components/TopTracks.js";
 import CollaborationGraph from "../components/CollaborationGraph.js";
+import Navbar from "../components/Nav.js"; // 네비바
+
+import "../styles/ArtistPage.css";
 
 function ArtistPage() {
   const [query, setQuery] = useState("");
@@ -86,76 +88,80 @@ function ArtistPage() {
   }, [artistName]);
 
   return (
-    <div className="artist-page container-fluid py-5">
-      <img className="welcome-bg" src="/bg.png" alt="" />
-
-      <div className="search-box d-flex justify-content-center mb-4">
-        <div className="input-group" style={{ maxWidth: "500px" }}>
-          <input
-            type="text"
-            className="form-control bg-dark text-white border-secondary"
-            placeholder="Artist..."
-            value={query}
-            onChange={inputChange}
-          />
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={() => searchClick()}
-          >
-            Search
-          </button>
-        </div>
-      </div>
-
-      {relatedArtists && (
-        <div className="d-flex justify-content-center gap-4">
-          <div
-            className="card p-4 w-100"
-            style={{ maxWidth: "900px", backgroundColor: "#121212" }}
-          >
-            <h5 className="mb-3 text-white">
-              Popularity Chart of Related Artists
-            </h5>
-            <PopularityBarchart artists={relatedArtists} />
+    <div className="wrap">
+      <Navbar />
+      <div className="App py-5">
+        <div className="artist-page container-fluid py-5">
+          <img className="welcome-bg" src="/bg.png" alt="" />
+          <div className="search-box d-flex justify-content-center mb-4">
+            <div className="input-group" style={{ maxWidth: "500px" }}>
+              <input
+                type="text"
+                className="form-control bg-dark text-white border-secondary"
+                placeholder="Artist..."
+                value={query}
+                onChange={inputChange}
+              />
+              <button
+                className="btn btn-primary"
+                type="button"
+                onClick={() => searchClick()}
+              >
+                Search
+              </button>
+            </div>
           </div>
 
-          {topTracks && relatedArtists.length > 0 && (
-            <div
-              className="card p-3"
-              style={{
-                width: "300px",
-                backgroundColor: "rgba(17, 59, 87, 0.329)",
-                color: "white",
-              }}
-            >
-              <h5 className="mb-3">{relatedArtists[0].name}'s Top Tracks</h5>
-              <TopTracks tracks={topTracks} />
+          {relatedArtists && (
+            <div className="d-flex justify-content-center gap-4">
+              <div
+                className="card p-4 w-100"
+                style={{ maxWidth: "900px", backgroundColor: "#121212" }}
+              >
+                <h5 className="mb-3 text-white">
+                  Popularity Chart of Related Artists
+                </h5>
+                <PopularityBarchart artists={relatedArtists} />
+              </div>
+
+              {topTracks && relatedArtists.length > 0 && (
+                <div
+                  className="card p-3"
+                  style={{
+                    width: "300px",
+                    backgroundColor: "rgba(17, 59, 87, 0.329)",
+                    color: "white",
+                  }}
+                >
+                  <h5 className="mb-3">{relatedArtists[0].name}'s Top Tracks</h5>
+                  <TopTracks tracks={topTracks} />
+                </div>
+              )}
+            </div>
+          )}
+
+          {collaboration && (
+            <div className="d-flex justify-content-center mt-4">
+              <div
+                className="card p-4"
+                style={{
+                  width: "100%",
+                  maxWidth: "900px",
+                  backgroundColor: "#121212",
+                  color: "white",
+                  boxSizing: "border-box",
+                }}
+              >
+                <h5 className="mb-3">Collaboration Graph</h5>
+                <CollaborationGraph
+                  main={relatedArtists[0].name}
+                  data={collaboration}
+                />
+              </div>
             </div>
           )}
         </div>
-      )}
-
-      {collaboration && (
-        <div className="d-flex justify-content-center mt-4">
-          <div
-            className="card p-4"
-            style={{
-              width: "100%",
-              maxWidth: "900px",
-              backgroundColor: "#121212",
-              color: "white",
-              boxSizing: "border-box",
-            }}
-          >
-            <h5 className="mb-3">Collaboration Graph</h5>
-            <CollaborationGraph
-              main={relatedArtists[0].name}
-              data={collaboration}
-            />
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
   

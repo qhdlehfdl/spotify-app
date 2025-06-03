@@ -6,11 +6,11 @@
   }
   
 .card.p-4{
-    background-color: rgba(17, 59, 87, 0.329) !important;
+    background-color: rgba(17, 59, 87, 0.35) !important;
 }
 
-  .artist-page{
-      margin-top: 80px;
+  .artist-page {
+    
   }
   
   input{
@@ -27,7 +27,7 @@
       padding: 10px;
       border-radius: 8px;
       border: 1px solid #333;
-      color: #fff;
+      color: #ffffff;
       text-align: center;
   }
   

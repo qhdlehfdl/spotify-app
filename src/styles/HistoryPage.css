@@ -34,8 +34,8 @@
   align-items: flex-start;
   margin-top: 2rem;
   gap: 2rem;
-  width: 95%;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -58,8 +58,8 @@
   position: fixed;
   top: 100px;
   left: 40px;
-  width: 600px;
-  height: 600px;
+  min-width: 40rem;
+  min-height: 40rem;
   z-index: 1;
 }
 
@@ -68,8 +68,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* 두 열로 나누기 */
   gap: 20px;
-  margin-left: 650px; /* 고정된 지구본 오른쪽 여백 확보 */
-  padding-top: 90px; /* 지구본 높이만큼 여백 확보 (필요시 조절) */
+  margin: 0 3rem 0 12.5rem; /* 고정된 지구본 오른쪽 여백 확보 */
+  padding-top: 5rem; /* 지구본 높이만큼 여백 확보 (필요시 조절) */
   z-index: 5;
 }
 

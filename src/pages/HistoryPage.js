@@ -1,13 +1,15 @@
 // src/pages/HistoryPage.js
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
+import { motion, AnimatePresence } from "framer-motion";
+
 import Globe from "../components/Globe.js";
-import "../styles/HistoryPage.css";
 import TopSongs from "../components/TopSongs.js";
 import TopArtists from "../components/TopArtists.js";
+import Navbar from "../components/Nav.js";
 
-// Framer Motion import
-import { motion, AnimatePresence } from "framer-motion";
+import "../styles/HistoryPage.css";
+
 
 function HistoryPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -80,6 +82,7 @@ function HistoryPage() {
   return (
     <div className="history-page">
       <img className="welcome-bg" src="/bg.png" alt="" />
+      <Navbar />
 
       <div className="calendar-header">
         <button
