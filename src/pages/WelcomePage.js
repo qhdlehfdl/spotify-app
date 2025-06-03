@@ -21,7 +21,7 @@ function WelcomePage() {
     <div className="app">
       <Navbar />
 
-      {/* 백그라운드 지구본 사진 (추후 영상으로 대체하거나, 그대로 사용) */}
+      {/* 백그라운드 지구본 사진 (추후 영상으로 대체 가능) */}
       <img className="welcome-bg" src="/bg.png" alt="" />
 
       {/* 중앙 환영글 */}
@@ -74,7 +74,7 @@ function WelcomePage() {
         </div>
       </div>
 
-      {/* footer 부분 (제거해도 무방) */}
+      {/* footer 부분 */}
       <footer className="welcome-footer">
         <div>
           <span>© 2025 Team Doraemon | </span>
