@@ -13,7 +13,7 @@
 
 .calendar-header {
   position: fixed;
-  top: 20px;
+  top: 4.25rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
@@ -56,8 +56,8 @@
 
 .globe-container {
   position: fixed;
-  top: 100px;
-  left: 40px;
+  top: 1rem;
+  left: 5rem;
   min-width: 40rem;
   min-height: 40rem;
   z-index: 1;
@@ -68,9 +68,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* 두 열로 나누기 */
   gap: 20px;
-  margin: 0 3rem 0 12.5rem; /* 고정된 지구본 오른쪽 여백 확보 */
+  margin: 0 5rem 0 10rem; /* 고정된 지구본 오른쪽 여백 확보 */
   padding-top: 5rem; /* 지구본 높이만큼 여백 확보 (필요시 조절) */
-  z-index: 5;
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none; /* 파이어폭스 */
+  -ms-overflow-style: none; /* IE, Edge */
+  z-index: 1;
+}
+
+.chart-container::-webkit-scrollbar {
+  display: none; /* 크롬 */
 }
 
 /*달력*/
