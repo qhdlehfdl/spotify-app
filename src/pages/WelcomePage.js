@@ -21,7 +21,7 @@ function WelcomePage() {
     <div className="app">
       <Navbar />
 
-      {/* 백그라운드 지구본 사진 (추후 영상으로 대체 가능) */}
+      {/* 백그라운드 지구 사진 */}
       <img className="welcome-bg" src="/bg.png" alt="" />
 
       {/* 중앙 환영글 */}

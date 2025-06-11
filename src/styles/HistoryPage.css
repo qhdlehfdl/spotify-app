@@ -69,20 +69,20 @@
   grid-template-columns: 1fr 1fr; /* 두 열로 나누기 */
   gap: 20px;
   margin: 0 5rem 0 50%; /* 고정된 지구본 오른쪽 여백 확보 */
-  padding-top: 5rem; /* 지구본 높이만큼 여백 확보 (필요시 조절) */
+  padding-top: 5rem; /* 지구본 높이만큼의 여백 */
   width: 50%;
   height: 95vh;
   overflow-y: auto;
-  scrollbar-width: none; /* 파이어폭스 */
-  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* 파이어폭스 스크롤바 제거 */
+  -ms-overflow-style: none; /* IE, Edge 스크롤바 제거 */
   z-index: 1;
 }
 
 .chart-container::-webkit-scrollbar {
-  display: none; /* 크롬 */
+  display: none; /* 크롬 스크롤바 제거 */
 }
 
-/*달력*/
+/* 달력(날짜 선택) */
 .react-calendar {
   width: 280px;
   max-width: 100%;

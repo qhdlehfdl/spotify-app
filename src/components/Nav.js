@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <nav className="main-navbar">
       <div className="navbar-section navbar-left">
-        {/* 사이트 로고 (원하는 이미지나 텍스트로 교체) */}
+        {/* 사이트 로고 (아이콘) */}
         <img src="/logo_only.png" alt="Logo" className="navbar-logo" />
       </div>
       <div className="navbar-section navbar-center">
