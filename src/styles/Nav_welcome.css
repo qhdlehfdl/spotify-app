@@ -3,7 +3,7 @@
   left: 0;
   top: 0;
   width: 100vw;
-  background: linear-gradient(to bottom, #1a1a1a80 90%, transparent 100%);
+  background: transparent;
 
   height: 64px;
 
@@ -27,5 +27,4 @@
 
 .navbar-logo {
   height: 40px;
-  /* 로고 크기 조정 */
 }
