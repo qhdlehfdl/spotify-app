@@ -110,6 +110,7 @@ function StreamingPage() {
         setStreamingChartData(temp);
       }
     }
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   };
 
   return (

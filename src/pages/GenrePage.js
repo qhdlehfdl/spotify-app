@@ -71,6 +71,7 @@ function GenrePage() {
       setCountryError(err.message);
     } finally {
       setIsCountryLoading(false);
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     }
   };
 
@@ -86,8 +87,8 @@ function GenrePage() {
           },
         })),
       });
-      
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleCountryGenreClick = (genreName) => {
@@ -103,6 +104,7 @@ function GenrePage() {
         })),
       });
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   
 
