@@ -123,9 +123,7 @@ function StreamingPage() {
         </div>
       )}
 
-      {/* 상단 영역: 좌우 분할 */}
       <div className="top-section">
-        {/* 왼쪽: 지구본 */}
         <div className="globe-panel">
           <h3>Choose Country</h3>
           <div className="globe-wrapper">
@@ -138,7 +136,6 @@ function StreamingPage() {
           </div>
         </div>
 
-        {/* 오른쪽: 아티스트 & 곡 */}
         <div className="charts-panel">
           <div className="artist-chart-cell">
             <h3>{selectedCountry} Top Artist</h3>
@@ -170,7 +167,6 @@ function StreamingPage() {
         </div>
       </div>
 
-      {/* 하단: 전체 폭 차트 */}
       <div className="trend-chart-cell">
         <h3>Weekly Streaming</h3>
         {streamingChartData ? (

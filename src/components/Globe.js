@@ -69,7 +69,7 @@ const Globe = ({ onCountryClick, selectedCountry }) => {
       .attr("stroke", "#ffff")
       .attr("d", path);
 
-    d3.json(
+    d3.json( //국가 확인인
       "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
     ).then((world) => {
       const countries = topojson.feature(

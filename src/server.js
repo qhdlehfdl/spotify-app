@@ -20,7 +20,7 @@ app.use(express.json());
 const PORT = 4000;
 
 const unofficialToken =
-  "Bearer BQA9KHmGTEEdpqWbYjexkwSo7nmxjoPiyKlEpCrGtszZdU1_3kNCV9JIXVJ5TFa_nWhNXCvqt8ttH1OYgJYuW0SLzefq6-W_xqeA5ECr9Z-1fyz-YSke_4u6K6ep8GVZG_sQpLDldhyCTohPeCUw2u3YTsGJrk10m28rUt-y9-JQSA-zyku4-wsgUtFab5jP-rX3jeEUw42JO5MXif-QQKWR3HeesWyDN9zS7DZo0nmJ8_RsYuqogReMV8MB6KDE";
+  "Bearer BQAiHGzqNHiL1XVi2W1JdKcO9u318Ff2uBhrFgDonOt1EpeL6zZ8JVwhypFj9007cLWSbUAEpY0rkC3Q-RFHkQfQpFOjMnWCXMkFijlv91rJJBzXO1GJvP2shlYZ5KcArh4Ul0qw-8gwbdyIvCowhSyMwlHn9IwEzAtx7Y-DeAYQPUOEFI525N0XiFtVXzzT1Zeh4GQn1eOmMKlSnNnRKE32eZ_P6x_ZQ9jfLjCRCDUw7yogYYhJCYHwu-bSREzv";
 
 app.get("/api/countryTop5/:country", async (req, res) => {
   const countryName = req.params.country;
